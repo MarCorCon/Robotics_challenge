@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<launch>
+	<master auto="true"/>
+	
+	<!--Start the map server for the path planner-->
+ 	<node name="map_server" pkg="map_server" type="map_server" args="$(find robotics_challenge)/maps/robotics_lab_real.yaml"/>
+	
+	<node pkg="amcl" type="amcl" name="amcl" args="scan:=/scan">
+		<param name="initial_pose_x" value="8.48" /> 
+    		<param name="initial_pose_y" value="15.4" />
+		<param name="initial_pose_a" value="0" />
+	</node>
+
+	<node pkg="robotics_challenge" name="robotics_challenge" type="robotics_challenge">
+		<rosparam file="$(find robotics_challenge)/params/global_costmap_params.yaml" command="load"  /> 
+		<param name="start_x" value="8.48" /> 
+    		<param name="start_y" value="15.4" />
+		<param name="goal_x" value="12.6" />
+		<param name="goal_y" value="17.2" />
+	</node>
+	
+	<node pkg="rviz" type="rviz" name="rviz" args="-d $(find robotics_challenge)/rviz/turtlebot.rviz"/>
+</launch>

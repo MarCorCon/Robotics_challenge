@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<launch>
+	<arg name="file" /> 
+	<master auto="true"/>
+
+	<node pkg="robotics_challenge" type="metrics" name="metrics" output="screen" respawn="false">
+		<param name="start_x" value="3.46" /> 
+    		<param name="start_y" value="4.62" />
+		<param name="goal_x" value="6.0" />
+		<param name="goal_y" value="9.0" />
+		<param name="bag_file" value="$(find robotics_challenge)/bags/$(arg file)" />
+
+	</node>
+
+
+</launch>

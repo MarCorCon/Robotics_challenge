@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+	<master auto="true"/>
+	<node pkg="rosbag" type="record" name="record_1" args=
+		"/scan
+		/map_pose
+		-o $(find robotics_challenge)/bags/test" />
+</launch>
